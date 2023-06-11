@@ -27,22 +27,14 @@ namespace domain.test.services
         public string getStaircase(int n)
         {
             StringBuilder sb = new();
-
             for (int y = n - 1; y >= 0; y--)
             {
                 for (int x = 0; x < n; x++)
                 {
                     if (x >= y)
-                    {
-
                         sb.Append('#');
-                    }
                     else
-                    {
-
                         sb.Append(' ');
-                    }
-
                 }
                 sb.Append("\n");
             }

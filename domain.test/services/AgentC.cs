@@ -25,29 +25,35 @@ namespace domain.test.services
         public string getStaircase(int n)
         {
             StringBuilder sb = new();
+            int total = ((n - 1) * 2) + n;
+            int size = (total - n) / 2;
 
-            int c = n;
-           
-            for (int y = n -1; y >= 0; y--)
-            {
-                for (int x = 0; x < ((n-1) * 2) + n; x++)
+            for (int y = n - 1; y >= 0; y--)
+            {   
+                for (int x = 0; x < total; x++)
                 {
-                   
-                    if (x < y || x >= y + c + 2)
-                    {
-                        sb.Append('$');
-                    }   
+                    if (x < size)
+                        sb.Append(" ");
                     else
                     {
-                        sb.Append('#');
+                        if (x < total - size)
+                            sb.Append("#");
+                        else
+                            sb.Append(" ");
                     }
-                   
                 }
                 sb.Append("\n");
+                size--;
             }
+
+            char[] stringArray = sb.ToString().ToCharArray();
+            Array.Reverse(stringArray);
+            string reversedStr = new string(stringArray);
+            sb.Append(reversedStr.Substring(total + 2));
 
             return sb.ToString();
         }
+
     }
 }
 
